@@ -105,6 +105,39 @@ public class Conditions
         }
     }
     
+    public static void stringExample()
+    {
+        Scanner s = new Scanner(System.in);
+        System.out.print("enter two words: ");
+        String str1 = s.next();
+        String str2 = s.next();
+        
+        
+        /*
+         * The equality operator (==) returns true if the two variables (e.g., str1 and str2)
+         *  contain the same value.  For variables of a class type, including Strings,
+         *  this means that they must contain the same reference.  That is, they refer to the same object,
+         *  in memory, NOT that the two strings contain the same sequence of characters.
+         *  
+         *  Alias: two variables that refer to the same object.
+         */
+        if(str1 == str2)
+        {
+            System.out.println("The string references are equal!");
+            
+        }
+        else
+        {
+            System.out.println("The string references are NOT equal.");
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
     
     
     
