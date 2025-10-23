@@ -32,6 +32,16 @@ public class Conditions
         }
         
         /*
+         * { } are not required for single statements
+         *      However they are always a good idea!
+         *      Leaving them out can lead to bugs like below...
+         */
+        if(coinFlip == 0)
+            System.out.println("coin is tails!");
+            System.out.println("better luck next time...");  // runs regardless
+            
+        
+        /*
          * if, else statement
          * 
          * The else block is executed if the conditonal expression evaluates to false
@@ -69,18 +79,39 @@ public class Conditions
         {
             System.out.println("rolled a four");
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 
     }
+    
+    public static boolean doublesAreEqual(double num1, double num2)
+    {
+        
+        /*
+         * If we use the equality operator with doubles, it will only return true if all binary digits match.
+         * 
+         * For "equal" numbers, this may not be case due to floating point rounding and therefor,
+         *      not what we want.
+         *      
+         *      We will instead check if they are "close enough" (i.e., use an EPSILON).
+         */
+        final double EPSILON = 1e-6;
+        
+        if(Math.abs(num1 - num2) < EPSILON)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
