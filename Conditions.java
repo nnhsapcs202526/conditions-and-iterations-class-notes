@@ -80,13 +80,77 @@ public class Conditions
             System.out.println("roll was 4");
         }
         
+
         
+    }
+    
+    public static boolean doublesAreEqual(double num1, double num2)
+    {
+        /*
+         * If we use the equality operator (==), it only returns true if all binary digits match.
+         *  For "equal" numbers, this is propably not what we want due to floating point rounding.
+         *  
+         *  Instead, we check if the numbers are "close enough" (i.e., EPSILON value).
+         */
         
+        final double EPSILON = 1e-6;
         
-        
-        
-        
+        if(Math.abs(num1 - num2) < EPSILON)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
         
         
     }
+    
+    public static void stringExample()
+    {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Please enter two words: ");
+        String str1 = s.next();
+        String str2 = s.next();
+        //str2 = str1;  create an alias
+        
+        /*
+         * The equality operator returns true if two variables contain the same value.  For varaibles of a class type,
+         *       , like Strings, this means they contain the same same reference to the same object in memory (NOT
+         *       that they contain the same sequence of characters)
+         *       
+         *       Alias: two variables that refer to the same object.
+         */
+        if (str1 == str2)
+        {
+            System.out.println("String references are equal");
+        }
+        else
+        {
+            System.out.println("String references are NOT equal");
+        }
+        
+        /*
+         * The equals method returns true if the two obejcts referenced by the variables are "equal".  What "equal" 
+         *      means is defined by the class.  For strings, it means it has the same sequence of characters.
+         */
+        if (str1.equals(str2))
+        {
+            System.out.println("Strings are equal");
+        }
+        else
+        {
+            System.out.println("String are NOT equal");
+        }
+        
+        
+        if (!str1.equals(str2))
+        {
+            System.out.println("Strings are NOT equal");
+        }
+    }
+    
+    
+    
 }
