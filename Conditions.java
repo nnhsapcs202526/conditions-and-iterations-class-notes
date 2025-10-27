@@ -149,6 +149,67 @@ public class Conditions
         {
             System.out.println("Strings are NOT equal");
         }
+        
+        /*
+         * We will determine which string comes first lexicographically using the
+         *      compareTo method of the String class.
+         *      
+         *  compareTo return an int value:
+         *      0:      if the strings are equal (same sequence of characters)
+         *      <0:     if str1 < str2 lexicographically
+         *      >0:     if str1 > str2 lexicographically
+         */
+        int result = str1.compareTo(str2);
+       
+        if(result < 0)
+        {
+            String firstStr = str1;
+        }
+        else if(result > 0)
+        {
+            String firstStr = str2;
+        }
+        
+        if(firstStr != null)
+        {
+            System.out.println("The first string is: " + firstStr);
+        }
+        else
+        {
+            System.out.println("strings are equal");
+        }
+        
+        /*
+         * This is an example of a "short circuit".
+         * 
+         *  For an AND operation, if the left operand is false, the right operand will
+         *      not be evaluated. This is because we have already determined the AND
+         *      operation will be false.
+         */
+        if(firstStr != null && firstStr.length() > 3)
+        {
+            System.out.println("The first string has more than 3 characters.");
+        }
+        
+        /*
+         * This is another "short circuit" example.
+         * 
+         *  For an OR operation, if the left operand is true, the right operand will
+         *      not be evaluated. This is because we have already determined the OR
+         *      operation will be true.
+         *      
+         *  This results in a bug if the first word is "kiwi".
+         */
+        System.out.print("Enter your two favorite fruits: ");
+        if(s.next().equals("kiwi") || s.next().equals("kiwi"))
+        {
+            System.out.println("Yum! Kiwis!");
+        }
+        
+        System.out.print("Enter your favorite ice cream flavor: ");
+        String flavor = s.next();
+        System.out.println("Favorite ice cream flavor: " + flavor);
+
     }
     
     
