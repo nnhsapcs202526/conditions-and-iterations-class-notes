@@ -163,14 +163,14 @@ public class Conditions
         int result = str1.compareTo(str2);
         System.out.println("Result of compareTo: " + result);
         
-        
+        String firstStr = null;
         if(result < 0)
         {
-            String firstStr = str1;
+            firstStr = str1;
         }
         else if(result > 0)
         {
-            String firstStr = str2;
+            firstStr = str2;
         }
         
         if(firstStr != null)
@@ -212,6 +212,8 @@ public class Conditions
         System.out.print("Enter your favorite ice cream flavor: ");
         String flavor = s.next();
         System.out.println("Favorite ice cream flavor: " + flavor);
+        
+        
     }
     
     
