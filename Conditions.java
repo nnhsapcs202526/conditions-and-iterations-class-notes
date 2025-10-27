@@ -160,14 +160,16 @@ public class Conditions
          *      >0:     if str1 > str2 lexicographically
          */
         int result = str1.compareTo(str2);
-       
+        System.out.println("The result of compareTo is: " + result);
+        
+        String firstStr = null;
         if(result < 0)
         {
-            String firstStr = str1;
+            firstStr = str1;
         }
         else if(result > 0)
         {
-            String firstStr = str2;
+            firstStr = str2;
         }
         
         if(firstStr != null)
