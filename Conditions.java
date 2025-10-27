@@ -112,7 +112,6 @@ public class Conditions
         String str1 = s.next();
         String str2 = s.next();
         
-        
         /*
          * The equality operator (==) returns true if the two variables (e.g., str1 and str2)
          *  contain the same value.  For variables of a class type, including Strings,
@@ -130,6 +129,92 @@ public class Conditions
         {
             System.out.println("The string references are NOT equal.");
         }
+        
+        
+        /*
+         * The equals method returns true if the two strings have the same characters.  For objects in general,
+         *      if the two references are "equal", as determined by the class, then the equals method returns true.
+         */
+        if(str1.equals(str2))
+        {
+            System.out.println("The strings are equal (same sequence of characters)");
+        }
+        else
+        {
+            System.out.println("The strings are NOT equal (NOT same sequence of characters)");
+        }
+        
+        /*
+         * If we want to see if the strings are NOT equal, we can use the logical complement operator (i.e., !).
+         */
+        if (! str1.equals(str2))
+        {
+            System.out.println("The strings are NOT equal (NOT same sequence of characters)");
+        }
+        
+        
+        /*
+         * We will determine which string comes first lexicographically using the compareTo method of
+         *      the String class.
+         *      
+         *      compareTo returns an int value:
+         *          0:  if the string are equal (same sequence of characters)
+         *          <0: if str1 < str2 lexicographically
+         *          >0: if str1 > str2 lexicographically
+         */
+        int result = str1.compareTo(str2);
+        System.out.println("Result of compareTo: " + result);
+        
+        String firstStr = null;
+        if(result < 0)
+        {
+            firstStr = str1;
+        }
+        else if (result > 0)
+        {
+            firstStr = str2;
+        }
+        
+        if(firstStr != null)
+        {
+            System.out.println("The first String is: " + firstStr);
+        }
+        else
+        {
+            System.out.println("The strings are equal.");
+        }
+        
+        /*
+         * This is an example of a "short circuit".
+         * 
+         * For an AND operation, if the left operand is false, the right operand will not be evaluated.  This
+         *      is because we have alrady determined the and operation will be false.
+         */
+        
+        if(firstStr != null && firstStr.length() > 3)
+        {
+            System.out.println("The first string has more than 3 charcaters.");
+        }
+        
+        /*
+         * This is another "short circuit" example.
+         * 
+         * For an OR operation, if the left operand is true, the right operand will not be evaluated.  This
+         *      is because we have already determined the OR operation will be true.
+         */
+        
+        System.out.print("Enter your two favorite fruits: ");
+        if(s.next().equals("kiwi") || s.next().equals("kiwi"))
+        {
+            System.out.println("Yum! Kiwis!");
+        }
+        
+        System.out.print("Enter your favorite ice cream flavor: ");
+        String flavor = s.next();
+        System.out.println("Favorite ice cream flavor: " + flavor);
+        
+        
+        
     }
     
     
