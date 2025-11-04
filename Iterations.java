@@ -60,4 +60,75 @@ public class Iterations
         }
         System.out.println("done.");
     }
+    
+    public static void forExample()
+    {
+        /*
+         * for loop:
+         * 
+         *  Three parts of the for statement:
+         *          1. initialization - executed once
+         *          2. condition - boolean expression evaluated at the start of each loop iteration
+         *          3. update the loop variable - executed at the end of each loop iteration
+         */
+        
+        for (int count = 1;         // initialization
+                 count <= 5;        // condition
+                 count++)           // update of the loop variable
+        {
+            System.out.println(count);      // body
+        }
+        
+        System.out.println("done");
+    }
+    
+    public static void forExample2()
+    {
+        int count = 1;
+        for (               ;       // initialization
+                 count <= 5;        // condition
+                 )           // update of the loop variable
+        {
+            System.out.println(count);      // body
+            count++;
+        }
+        
+        System.out.println("done");
+        
+        /*
+         * Variables declared within the for statement are scoped to the for statement and its body
+         */
+        System.out.println("The final value of count is: " + count);
+    }
+    
+    public static void offByOne()
+    {
+        /*
+         * The infamous off-by-one error is common with for loops, executing one too many or one too few times.
+         * 
+         * Carefully ask: 
+         *                  Should the initial value start at 0 or 1?
+         *                  Should the condtion be  < or <= ?
+         *                  
+         * By convention, for simple for loops, we start at 0 and use the < operator.
+         */
+        
+        // we want to print five *
+        for(int i = 0; i <= 5; i++)
+        {
+            System.out.println("*");
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
