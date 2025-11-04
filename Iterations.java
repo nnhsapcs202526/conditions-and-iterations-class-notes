@@ -50,4 +50,82 @@ public class Iterations
         
         
     }
+    
+    
+    public static void forExample()
+    {
+        /*
+         * for loop:
+         * 
+         *      Three parts of the for statement:
+         *              1. initializaiton - executed once at the start
+         *              2. condition - boolean expression evaluated at he start of each loop iteration
+         *              3. increment or update the loop variable - executed at the end of each loop iteration
+         *                                                          *before* evaluating the condition again
+         */
+        for(int count = 1;      // initialization
+                count <= 5;     // condition
+                count++)        // increment or update the loop variable
+        {
+            System.out.println(count);  // body
+        }
+        
+        System.out.println("done.");
+        
+        /*
+         * variables declared within the for statement are scoped to the for statement and its body
+         */
+        //System.out.println("the final value of count is: " + count);
+        
+        
+    }
+    
+    public static void forExample2()
+    {
+        int count = 1;
+        
+        for(            ;      // initialization
+                count <= 5;     // condition
+                )        // increment or update the loop variable
+        {
+            System.out.println(count);  // body
+            count++;
+        }
+        
+        System.out.println("done.");
+        
+       
+        System.out.println("the final value of count is: " + count);
+        
+        
+    }
+    
+    public static void offByOne()
+    {
+        /*
+         * The infamous off-by-one error is common with for loops executing one too many times or one too few.
+         * 
+         * Carefully ask: Should the initial a=value start at 1 or 0?
+         *                Should the condition be <  or <= ?
+         *                
+         *                "Think! Don't just compile at random!"
+         *                
+         * By convention, for simple for loops we start at 0 and use the <.
+         */
+        
+        // we want to print five stars
+        for(int i = 0; 
+            i <= 5;   // should be < instead of <=
+            i++)  
+        {
+            System.out.println("*");
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
 }
