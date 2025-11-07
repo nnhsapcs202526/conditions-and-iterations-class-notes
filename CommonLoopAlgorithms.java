@@ -10,7 +10,21 @@ public class CommonLoopAlgorithms
      */
     public static int countMatchesForLength()
     {
-        return 0;
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter a word ('quit' to exit): ");
+        int numOfWords = 0;
+        String word = s.next();
+
+        while (!word.equals("quit"))
+        {   if (word.length() > 4)
+            {
+                numOfWords++;
+            }
+            System.out.print("Enter a word ('quit' to exit): ");
+            word = s.next();
+        }
+        return numOfWords;
     }
 
     /*
@@ -24,18 +38,18 @@ public class CommonLoopAlgorithms
         Scanner s = new Scanner(System.in);     //Creates a scanner to take user input
         String word = "";       //Creates a string that is used to store the word the user inputs
         int count = 0;      // Will be incramented to count the number of words starting with 'con'
-       
+
         while (!word.equals("quit"))        // Starts a while loop that ends if the user inputs the word 'quit'
         {
             System.out.println("Enter a word (quit to stop): ");        // Prompts the user to input a word
             word = s.nextLine().toLowerCase();      //Takes in the word from the user and makes it lower case
-           
+
             if (word.substring(0,3).equals("con"))      // If statement to check if the word starts with 'con'
             {
                 count += 1;         // If the word starts with 'con', count is incramented by 1
             }
         }
-       
+
         return count;           //Returns the number of words that start with 'con'
     }
 
@@ -47,56 +61,34 @@ public class CommonLoopAlgorithms
      */
     public static int countMatchesForSuffix()
     {
-        /*
-         * What our algorithm does:
-         *
-         * Creates a do while loop.
-         * Inside the loop askes the user for a word.
-         * If the word's length if greater than 3, then check if it ends in "est".
-         * If it doesn't end in "est", then it will not be counted.
-         * If the word's length isn't greater than 3, then warn the user and continue because this might create an index error
-         * At the end of the loop, check if the word given is "quit".
-         * If it is "quit", then end the loop.
-         * Return the total words counted that ended with "est".
-         *
-         * Challenges:
-         * We accidently didn't noticed that we placed a ";" after the if statements.
-         * This caused a normal statement rather than a conditional statement. Which caused it to count every word, even if it didn't end with "est".
-         *
-         * We could imagine that some other groups would forget to lowercase their word, which would make quitting out of the loop harder since its case sensitive.
-         * This would also make counting if the word ended in "est" harder. Since it would also be case sensitive.
-         *
-         */
-       
-       
-        int wordSuffixCount = 0; // initializes a count to return
-        String word; // initializes a word to turn into the input's given word
-       
-        Scanner s = new Scanner(System.in); // scanner to use to get the next word
-       
-        do //starts a do-while loop to ask the user a series of words repeatedly
-        {
-            System.out.print("Enter a word (quit to end): "); //gives instructions
-            word = s.next(); //lets the user enter their next word as input
-           
-            if(word.length() >= 3) //if statement to check if the word is greater or equal to 3 letters long, because if it is shorter, then indexing will malfunction
-            {
-                if(word.substring(word.length() - 3, word.length()).toLowerCase().equals("est")) //gets the last 3 letters in lowercase to prevent case sensitivity, checks if they are equal to "est"
-                {
-                    wordSuffixCount++; //adds to the count because it was a word that ended in "est"
-                }
+        Scanner s = new Scanner(System.in);
+        //quit leaves, just est words
+        int words = 0;
+        String word;
+        String substringedWord;
+        int wordLength;
+        while (true){
+            System.out.println("Tell me a word. If the word ends with est, then it will count");
+            word = s.next();
+            if (word.equals("quit")){
+                break;
             }
-            else//if the word isnt 3 letters long or more
-            {
-                System.out.println("That was wasn't 3 letter long, try again"); //warning
-                continue; //retrys the loop again if the word isnt 3 letters long
+
+            wordLength = word.length();
+
+            if (wordLength >= 3){
+                substringedWord = word.substring(wordLength-3);
             }
-           
+
+            else{
+                substringedWord = "For Now";
+            }
+
+            if (substringedWord.equals("est")){
+                words++;
+            }
         }
-        while(!word.toLowerCase().equals("quit")); // keeps the loop running until the next word is "quit"
-        //also in lowercase to prevent it being case sensitive
-       
-        return wordSuffixCount; // returns the amount of words with the suffix "est"
+        return words;
     }
 
     /*
@@ -108,34 +100,34 @@ public class CommonLoopAlgorithms
     public static String reverseWord()
     {
         Scanner s = new Scanner(System.in);
-       
+
         System.out.print("Enter a word: ");
         String word = s.nextLine();
         int wordLength = word.length();
         String reversed = "";
-       
+
         for (int i = 0;
-             i < wordLength;
-             i++)
+        i < wordLength;
+        i++)
         {
             reversed += word.substring(wordLength-(i+1),wordLength-i);
         }
-       
+
         return reversed;
     }
     // alternate
-      public static String reverseWord2()
+    public static String reverseWord2()
     {
         Scanner inputScanner = new Scanner(System.in);
         System.out.print("Enter a word: ");
         String word = inputScanner.nextLine();
-   
+
         String reverseWord = "";
-       
+
         for (int i = word.length() - 1; i >= 0; i--) {
-         
-         reverseWord += word.charAt(i);
-         System.out.println("Reversed word: " + reverseWord);
+
+            reverseWord += word.charAt(i);
+            System.out.println("Reversed word: " + reverseWord);
 
         }
         return reverseWord;
@@ -149,54 +141,50 @@ public class CommonLoopAlgorithms
     public static int compareAdjacent()
     {
         Scanner s = new Scanner(System.in);
-       
+
         String word1 = "";
         String word2 = "";
         int uniqueWords = 0;
         do {
-            word1 = word2;
-           
+            word1 = word2;  // save previous word
+
             System.out.print("Word: ");
             word2 = s.next();
             uniqueWords++;
-           
+
         }while(!word1.equals(word2));
-        return uniqueWords-2;
+        return uniqueWords-1;
     }
     // alternate
-     public static int compareAdjacent2()
+    public static int compareAdjacent2()
     {
         Scanner s = new Scanner(System.in);
-       
+
         boolean Same = true;
         int count = 0;
         String prevWord = "";
-       
-       
-       
+
         while (Same)
         {
             System.out.println("Enter the target word");
             String target = s.next();
             System.out.println("Enter another word");
             String word = s.next();
-           
+
             if (target.equals(word))
             {
                 Same = false;
             }
-           
+
             if (! word.equals(prevWord))
             {
                 count++;
             }
-           
-           
+
             System.out.println(prevWord);
             prevWord = prevWord.replace(prevWord, word);
         }
-       
-       
+
         return count;
     }
 
@@ -209,7 +197,13 @@ public class CommonLoopAlgorithms
      */
     public static String promptUntilMatch()
     {
-        return "";
+        Scanner s = new Scanner(System.in);
+        String inp = "";
+        do{
+            System.out.print("Enter a word (after or equal to 'north' and ≥ 6 letters): ");
+            inp = s.next();
+        } while (!((inp.compareTo("north") > 0) && (inp.length() >= 6)));
+        return inp;
     }
 
     /*
