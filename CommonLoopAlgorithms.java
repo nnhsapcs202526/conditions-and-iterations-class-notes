@@ -285,24 +285,15 @@ public class CommonLoopAlgorithms
      */
     public static String reverseWord()
     {
-        Scanner s = new Scanner(System.in);//asks the user for the word
-        String word = s.next();//store reference to the variable word
-        int num = word.length();//get the total length of the word
-        num-=1;//minus one, so the loop doesn't go out of bounds
-        int num2 = word.length();//duplicated the number of length of the word for the loop
-        String newWord = " ";//make a new variable for the new word
-        for( int i = 0; i< num2; i++)//loop conditions, initialization, and update the loop
-        {
-            String letter = word.substring(num,num+1);//takes each letter of the word but starting at the last letter
-            newWord += letter;//adds the letter to the variable new word
-            num-=1;//update num, so each loop, it will take the letter before the previous letter
-
+        Scanner s = new Scanner(System.in);
+        String n = s.next();
+        String newString = "";
+       
+        for (int i = 0; i < n.length(); i++) {
+            newString += n.substring(n.length() - i - 1, n.length() - i);
         }
-        System.out.println(newWord);//prints the new word, to make sure it works
-        return newWord;//returns the new word
-        /*
-         * We were struggling to get the index right, we often went out of bounds, we also didn't add the letter to the newWord variable correctly. These are the challenges.
-         */
+       
+        return newString;
     }
 
     /*
