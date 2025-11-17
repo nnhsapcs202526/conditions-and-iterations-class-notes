@@ -118,7 +118,26 @@ public class ColorManipulator
     {
         //make the r g and b values all equal
         //maybe averaging them?
+        //after researching ill make and use a formula called the luminosity method or something
+        int width = this.picture.getWidth();
+        int height = this.picture.getHeight();
+        for( int y = 0; y < height; y++ )
+        {
+            for( int x = 0; x < width; x++ )
+            {
+                Pixel pixel = this.picture.getPixel( x, y );
+                int red = pixel.getRed();
+                int blue = pixel.getBlue();
+                int green = pixel.getGreen();
+                int greyValue = (int) Math.round((0.299 * red) + (0.587 * green) + (0.114 * blue));
+                pixel.setRed(greyValue);
+                pixel.setGreen(greyValue);
+                pixel.setBlue(greyValue);
+            }
+        }
     }
+    
+    
     /**
      * Method to apply a Shepard Fairey style effect to an image.  This version uses a 4 color palette.
      * 
@@ -129,7 +148,7 @@ public class ColorManipulator
      */
     public void posterize(Color color1, Color color2, Color color3, Color color4) {
         // TO DO: implement posterize method...
-
+        
     }
 
     
