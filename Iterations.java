@@ -172,7 +172,81 @@ public class Iterations
         return sum;
     }
     
+    public static int sumWithBreak()
+    {
+        Scanner s = new Scanner(System.in);
+        int sum = 0;
+        int value = 0;
+        
+        do
+        {
+            /*
+             * Sentinel value / variable
+             *  value (e.g., -1) used to exit a loop
+             *  It is often entered by a user.
+             */
+            System.out.print("enter a postitive integer (-1 to quit): ");
+            
+            value = s.nextInt();
+            
+            if (value == -1)
+            {
+                /*
+                 * break: immediately exits the inner-most loop
+                 */
+                break;
+            }
+            
+            sum += value;
+
+        }
+        while(value != -1);
+        
+        
+        return sum;
+    }
     
+    public static int sumWithContinue()
+    {
+        Scanner s = new Scanner(System.in);
+        int sum = 0;
+        int value = 0;
+        
+        do
+        {
+
+            System.out.print("enter a postitive integer (-1 to quit): ");
+            
+            /*
+             * The hasNextInt method of the Scanner class returns true if the next token to be read is an integer; otherwise,
+             *      it return false.  It does not consume the next token.  If there are no tokens in the stream, it 
+             *      waits until there are.
+             */
+            if(s.hasNextInt() == false)
+            {
+                System.out.println(s.next() + " is not an integer; try again.");
+                
+                /*
+                 * continue:
+                 *      1. immediately skips teh the end of the innermost loop
+                 *      2. reevaluates the loop condition and continues with the next iteration if the 
+                 *              condition is true.
+                 */
+                continue;
+            }
+            
+            value = s.nextInt();
+            
+            if(value != -1)
+            {
+                sum += value;
+            }
+        }
+        while(value != -1);
+        
+        
+        return sum;
+    }
     
     
 }
