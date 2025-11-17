@@ -174,9 +174,80 @@ public class Iterations
     
     }
     
+    public static int sumWithBreak()
+    {
+        Scanner s = new Scanner(System.in);
+        
+        int sum = 0;
+        int value = 0;
+        
+        do 
+        {
+            System.out.print("Enter a positive integer (-1 to quit): ");
+
+            value = s.nextInt();  
+            
+            if(value == -1)
+            {
+                /*
+                 * break: immediately exits the innermost loop
+                 */
+                break;
+            }
+            
+            sum += value;
+            
+        }
+        while(value != -1);
+        
+        return sum;
+    
+    }
     
     
+    public static int sumWithContinue()
+    {
+        Scanner s = new Scanner(System.in);
+        
+        int sum = 0;
+        int value = 0;
+        
+        do 
+        {
+            
+            
+            System.out.print("Enter a positive integer (-1 to quit): ");
+            
+            /*
+             * The hasNextInt method of the Scanner class returns true if teh next token to be read is an integer;
+             *      otherwise false.  It does not consume the next token, only reads it.  If there are tokens it
+             *      will wait for the next one to be entered.
+             */
+            if(s.hasNextInt() == false)
+            {
+                System.out.println(s.next() + " is not an integer; try again.");
+                
+                /*
+                 * continue:
+                 *      1. immediately skips the rest of the inner-most loop
+                 *      2. re-evaluates the loop condition and continues with the next iteration if true
+                 */
+                continue;
+            }
+            
+            value = s.nextInt();  // scan a number in
+            
+            if(value != -1)
+            {
+                sum += value;
+            }
+            
+        }
+        while(value != -1);
+        
+        return sum;
     
+    }    
     
     
     
