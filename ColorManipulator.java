@@ -76,8 +76,49 @@ public class ColorManipulator
     
     // TO DO: create and implement maxRed and maxGreen methods...
     
+    /**
+     * Sets the red component of the color of every pixel in the picture to the maximum value
+     */
+    public void maxRed()
+    {
+        int width = this.picture.getWidth();
+        int height = this.picture.getHeight();
+
+        for( int y = 0; y < height; y++ )
+        {
+            for( int x = 0; x < width; x++ )
+            {
+                Pixel pixel = this.picture.getPixel( x, y );
+                pixel.setRed( 255 );
+            }
+        }
+    }
+    
+    /**
+     * Sets the green component of the color of every pixel in the picture to the maximum value
+     */
+    public void maxGreen()
+    {
+        int width = this.picture.getWidth();
+        int height = this.picture.getHeight();
+
+        for( int y = 0; y < height; y++ )
+        {
+            for( int x = 0; x < width; x++ )
+            {
+                Pixel pixel = this.picture.getPixel( x, y );
+                pixel.setGreen( 255 );
+            }
+        }
+    }
+    
     // TO DO: create and implement grayscale method...
     
+    public void grayscale()
+    {
+        //make the r g and b values all equal
+        //maybe averaging them?
+    }
     /**
      * Method to apply a Shepard Fairey style effect to an image.  This version uses a 4 color palette.
      * 

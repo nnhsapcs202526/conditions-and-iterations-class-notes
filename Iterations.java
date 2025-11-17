@@ -164,4 +164,63 @@ public class Iterations
         
         return sum;
     }
+    
+    public static int sumWithBreak()
+    {
+        Scanner s = new Scanner(System.in);
+        
+        int sum = 0;
+
+        int value = 0;
+        
+        do
+        {
+            System.out.print("Enter a positive integer: (-1 to quit)\t");
+            
+            value = s.nextInt();
+            if (value == -1)
+            {
+                break;
+            }
+            
+            sum += value;
+        } while(value != -1);
+                
+        return sum;
+    }
+    
+    public static int sumWithContinue()
+    {
+        Scanner s = new Scanner(System.in);
+        
+        int sum = 0;
+        int value = 0;
+        
+        do
+        {
+            System.out.print("Enter a positive integer: (-1 to quit)\t");
+            
+            /*
+             * The hasNextInt() method of the Scanner class returns true if the next token to be read is an integer;
+             *      otherwise false.    It does not consume the next token, it just reads it. If there are tokens it
+             *      will wait for the next one to be entered.
+             */
+            if (s.hasNextInt() == false){
+                System.out.print(s.next() + "Is not an int, try again. ");
+                
+                continue;
+            }
+            value = s.nextInt();
+            if (value != -1)
+            {
+                sum += value;
+            } else {
+                sum += 0;
+            }
+        }
+        while(value != -1);
+        
+        
+        return sum;
+    }
 }
