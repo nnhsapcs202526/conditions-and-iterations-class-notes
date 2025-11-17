@@ -148,9 +148,106 @@ public class ColorManipulator
      */
     public void posterize(Color color1, Color color2, Color color3, Color color4) {
         // TO DO: implement posterize method...
+        this.grayscale();
         
+        int width = this.picture.getWidth();
+        int height = this.picture.getHeight();
+    
+        int minGray = 255;
+        int maxGray = 0;
+        
+        for (int y = 0;
+        y < height; y++) {
+            for (int x = 0;
+            x < width; x++){
+                Pixel pixel = this.picture.getPixel(x, y);
+                int value = pixel.getRed();
+                if (value < minGray){
+                    minGray = value;
+                }
+                if (value > maxGray){
+                    maxGray = value;
+                }
+            }
+        }
+        
+        if (maxGray == minGray) {
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < width; x++) {
+                    this.picture.getPixel(x, y).setColor(color1);
+                }
+            }
+            return;
+        }
+    
+        // divide range into 4 
+        double range = (double)(maxGray - minGray + 1);
+        double t1 = minGray + range / 4.0;
+        double t2 = minGray + 2.0 * range / 4.0;
+        double t3 = minGray + 3.0 * range / 4.0;
+    
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                Pixel p = this.picture.getPixel(x, y);
+                int gray = p.getRed();
+    
+                if (gray >= t3) {
+                    p.setColor(color1); //lightest
+                } else if (gray >= t2) {
+                    p.setColor(color2); //second lightest
+                } else if (gray >= t1) {
+                    p.setColor(color3); //third lightest
+                } else {
+                    p.setColor(color4); //darkest
+                }
+            }
+        }
+    }
+    
+    public void blur(int blurAmount)
+    {
+        if (blurAmount < 1 || blurAmount > 10){
+            return;
+        }
+    
+        int imageWidth = picture.getWidth();
+        int imageHeight = picture.getHeight();
+    
+        Picture originalPicture = new Picture(picture);
+    
+        for (int row = 0; row < imageHeight; row++) {
+            for (int column = 0; column < imageWidth; column++) {
+    
+                int redTotal = 0;
+                int greenTotal = 0;
+                int blueTotal = 0;
+                int numberOfPixels = 0;
+    
+                for (int rowChange = -blurAmount; rowChange <= blurAmount; rowChange++) {
+                    for (int columnChange = -blurAmount; columnChange <= blurAmount; columnChange++) {
+    
+                        int neighborRow = row + rowChange;
+                        int neighborColumn = column + columnChange;
+    
+                        if (neighborRow >= 0 && neighborRow < imageHeight &&
+                            neighborColumn >= 0 && neighborColumn < imageWidth) {
+    
+                            Pixel neighborPixel = originalPicture.getPixel(neighborColumn, neighborRow);
+                            redTotal += neighborPixel.getRed();
+                            greenTotal += neighborPixel.getGreen();
+                            blueTotal += neighborPixel.getBlue();
+                            numberOfPixels++;
+                        }
+                    }
+                }
+    
+                Pixel currentPixel = picture.getPixel(column, row);
+                currentPixel.setRed(redTotal / numberOfPixels);
+                currentPixel.setGreen(greenTotal / numberOfPixels);
+                currentPixel.setBlue(blueTotal / numberOfPixels);
+            }
+        }
     }
 
-    
 
 }
