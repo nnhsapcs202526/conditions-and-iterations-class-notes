@@ -248,5 +248,33 @@ public class Iterations
         return sum;
     }
     
+    public static void diamond1()
+    {
+        Scanner s = new Scanner (System.in);
+        System.out.print("Please enter number of rows: ");
+        int n = s.nextInt();
+       
+        for ( int i=1;
+                  i<=n;
+                  i++)
+                  {
+                      int k=n-i;
+                      for ( k=n-i;
+                                k>0;
+                                k-=1)
+                                {
+                                    System.out.print(" ");}
+                      for ( int j=1;
+                                j<=i;
+                                j++)
+                                {
+                                System.out.print("*");
+                               
+                                }
+                      System.out.println("");
+                  }
+       
+    }
+    
     
 }
