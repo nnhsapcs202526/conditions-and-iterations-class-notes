@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.util.ArrayList;
 
 /**
  * Class that manipulates the colors in a specified picture
@@ -113,12 +114,15 @@ public class ColorManipulator
     }
     
     // TO DO: create and implement grayscale method...
-    
+    /**
+     * Makes
+     */
     public void grayscale()
     {
         //make the r g and b values all equal
         //maybe averaging them?
         //after researching ill make and use a formula called the luminosity method or something
+        // luminosity values -> red has weight of .299; green of .587; blue .114
         int width = this.picture.getWidth();
         int height = this.picture.getHeight();
         for( int y = 0; y < height; y++ )
@@ -129,10 +133,36 @@ public class ColorManipulator
                 int red = pixel.getRed();
                 int blue = pixel.getBlue();
                 int green = pixel.getGreen();
-                int greyValue = (int) Math.round((0.299 * red) + (0.587 * green) + (0.114 * blue));
-                pixel.setRed(greyValue);
-                pixel.setGreen(greyValue);
-                pixel.setBlue(greyValue);
+                int grayValue = (int) Math.round((red + green + blue) / 3.0);
+                Color grayscaled = new Color(grayValue, grayValue, grayValue);
+                pixel.setColor(grayscaled);
+            }
+        }
+    }
+    
+    
+    /**
+     * Makes
+     */
+    public void realGrayscale()
+    {
+        //make the r g and b values all equal
+        //maybe averaging them?
+        //after researching ill make and use a formula called the luminosity method or something
+        // luminosity values -> red has weight of .299; green of .587; blue .114
+        int width = this.picture.getWidth();
+        int height = this.picture.getHeight();
+        for( int y = 0; y < height; y++ )
+        {
+            for( int x = 0; x < width; x++ )
+            {
+                Pixel pixel = this.picture.getPixel( x, y );
+                int red = pixel.getRed();
+                int blue = pixel.getBlue();
+                int green = pixel.getGreen();
+                int grayValue = (int) Math.round((0.299 * red) + (0.587 * green) + (0.114 * blue));
+                Color grayscaled = new Color(grayValue, grayValue, grayValue);
+                pixel.setColor(grayscaled);
             }
         }
     }
@@ -148,7 +178,7 @@ public class ColorManipulator
      */
     public void posterize(Color color1, Color color2, Color color3, Color color4) {
         // TO DO: implement posterize method...
-        this.grayscale();
+        this.realGrayscale();
         
         int width = this.picture.getWidth();
         int height = this.picture.getHeight();
@@ -194,9 +224,9 @@ public class ColorManipulator
                 if (gray >= t3) {
                     p.setColor(color1); //lightest
                 } else if (gray >= t2) {
-                    p.setColor(color2); //second lightest
+                    p.setColor(color2);
                 } else if (gray >= t1) {
-                    p.setColor(color3); //third lightest
+                    p.setColor(color3);
                 } else {
                     p.setColor(color4); //darkest
                 }
