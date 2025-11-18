@@ -3,8 +3,8 @@ import java.awt.Color;
 /**
  * Class that manipulates the colors in a specified picture
  *
- * @author 
- * @version 
+ * @author mrcallaghan
+ * @version 18nov2025
  */
 public class ColorManipulator
 {
@@ -75,8 +75,15 @@ public class ColorManipulator
     }
     
     // TO DO: create and implement maxRed and maxGreen methods...
+    public void maxRed()
+    {}
+    
+    public void maxGreen()
+    {}
     
     // TO DO: create and implement grayscale method...
+    public void grayscale()
+    {}
     
     /**
      * Method to apply a Shepard Fairey style effect to an image.  This version uses a 4 color palette.
