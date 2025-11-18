@@ -75,8 +75,17 @@ public class ColorManipulator
     }
     
     // TO DO: create and implement maxRed and maxGreen methods...
+    public void maxRed()
+    {
+    }
+    
+    public void maxGreen()
+    {}
     
     // TO DO: create and implement grayscale method...
+    public void grayscale()
+    {
+    }
     
     /**
      * Method to apply a Shepard Fairey style effect to an image.  This version uses a 4 color palette.
