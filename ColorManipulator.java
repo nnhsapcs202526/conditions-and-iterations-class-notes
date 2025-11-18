@@ -3,8 +3,8 @@ import java.awt.Color;
 /**
  * Class that manipulates the colors in a specified picture
  *
- * @author 
- * @version 
+ * @author mrcallaghan
+ * @version 18nov2025
  */
 public class ColorManipulator
 {
@@ -45,6 +45,7 @@ public class ColorManipulator
             {
                 Pixel pixel = this.picture.getPixel( x, y );
                 Color color = pixel.getColor();
+                System.out.println(color);
                 
                 int negatedRed = 255 - color.getRed();
                 int negatedBlue = 255 - color.getBlue();
