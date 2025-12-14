@@ -65,7 +65,13 @@ public class CommonLoopAlgorithms
      */
     public static String promptUntilMatch()
     {
-        return "";
+        Scanner s = new Scanner(System.in);
+        String inp = "";
+        do{
+            System.out.print("Enter a word (after or equal to 'north' and ≥ 6 letters): ");
+            inp = s.next();
+        } while (!((inp.compareTo("north") > 0) && (inp.length() >= 6)));
+        return inp;
     }
 
     /*
